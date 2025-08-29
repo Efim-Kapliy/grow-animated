@@ -3,6 +3,8 @@ const swiper = new Swiper('.swiper', {
   direction: 'vertical',
   speed: 1700,
   parallax: true,
+  loop: false,
+  resistanceRatio: 0,
 });
 
 document.querySelectorAll('.head-content h1').forEach((e) => {
