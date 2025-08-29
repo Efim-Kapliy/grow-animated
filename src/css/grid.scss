@@ -21,6 +21,9 @@
 
 .col_lead {
   flex: 1;
+  @media (max-width: 1023px) {
+    display: none !important;
+  }
 }
 
 .col_center {
@@ -32,4 +35,13 @@
 .col_right {
   display: flex;
   justify-content: right;
+}
+
+.col_mobile {
+  display: none;
+  @media (max-width: 1023px) {
+    display: flex;
+    flex: 1;
+    justify-content: end;
+  }
 }
