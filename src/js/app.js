@@ -7,7 +7,7 @@ const swiper = new Swiper('.swiper', {
   resistanceRatio: 0,
 });
 
-document.querySelectorAll('.head-content h1').forEach((e) => {
+document.querySelectorAll('[data-slider-ui="title"]').forEach((e) => {
   const initialDuration = 1;
   const coefficient = 5;
 
