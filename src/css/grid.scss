@@ -1,0 +1,35 @@
+:root {
+  --grid-width: 1140px;
+  --grid-gutter: 0.5em;
+}
+
+.container {
+  max-width: calc(var(--grid-width) + var(--grid-gutter) * 2);
+  margin: auto;
+  padding: 0 var(--grid-gutter);
+}
+
+.row {
+  display: flex;
+  margin: 0 calc(var(--grid-gutter) * -1);
+}
+
+.col {
+  width: fit-content;
+  padding: 0 var(--grid-gutter);
+}
+
+.col_lead {
+  flex: 1;
+}
+
+.col_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.col_right {
+  display: flex;
+  justify-content: right;
+}

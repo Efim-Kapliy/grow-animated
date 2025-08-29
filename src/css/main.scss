@@ -1,0 +1,263 @@
+@use './vars.scss' as *;
+@use './grid.scss' as *;
+
+@font-face {
+  font-family: montserrat;
+  src: url(/fonts/Montserrat-Regular.woff2);
+}
+
+@font-face {
+  font-family: montserrat;
+  src: url(/fonts/Montserrat-SemiBold.woff2);
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: montserrat;
+  src: url(/fonts/Montserrat-Bold.woff2);
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: montserrat;
+  src: url(/fonts/Montserrat-Black.woff2);
+  font-weight: 900;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  background-color: #072d30;
+  color: var(--white-color);
+}
+
+body {
+  font-size: 16px;
+  font-family: montserrat, sans-serif;
+}
+
+img {
+  pointer-events: none;
+}
+
+.slider {
+  height: 100%;
+
+  &__wrapper {
+    will-change: transform;
+  }
+
+  &__layer {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  &__item {
+    overflow: hidden;
+    transform: scale(1.25) !important;
+    transition: 1.7s ease !important;
+    will-change: transform;
+
+    &:not(.swiper-slide-active) {
+      transform: scale(1) !important;
+    }
+  }
+}
+
+.slider-ui {
+  position: absolute;
+  z-index: 10;
+  inset: 0;
+}
+
+.top-line {
+  padding: 3.2em 0;
+}
+
+.logo {
+  display: block;
+
+  img {
+    display: block;
+    width: 15.5em;
+  }
+}
+
+.main-menu li {
+  list-style-type: none;
+  display: inline-block;
+
+  & > * {
+    color: var(--gray-color);
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.725em;
+    letter-spacing: 0.25em;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      display: inline-block;
+      height: 2px;
+      background-color: var(--green-color);
+      width: 11.25px;
+      vertical-align: middle;
+      top: -1px;
+      left: -1.5px;
+      position: relative;
+      border-radius: 10em;
+      margin: 0 7.25px;
+      visibility: hidden;
+    }
+  }
+
+  &.active > *,
+  &:hover > * {
+    color: var(--white-color);
+
+    &::before,
+    &::after {
+      visibility: visible;
+    }
+  }
+}
+
+.button {
+  padding: 1.05em 2em;
+  color: var(--white-color);
+  background-color: var(--green-color);
+  border: 1.5px solid transparent;
+  border-radius: 10em 0 10em 10em;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.21em;
+  text-transform: uppercase;
+  font-size: 0.65em;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--green-color);
+  }
+
+  &_top {
+    background-color: transparent;
+    border-color: var(--green-color);
+    margin: 0 2em 0 3em;
+  }
+
+  &_main {
+    margin-top: 3em;
+    padding: 1.6em 3.5em;
+  }
+}
+
+.submenu {
+  --anim-menu-btn-color: var(--gray-color);
+  --anim-menu-btn-gap: 0.195em;
+  --anim-menu-btn-width: 1.08em;
+}
+
+.head {
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &-content {
+    display: flex;
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    line-height: 1;
+    flex-direction: column;
+
+    h1 {
+      font-size: calc(var(--index) * 11.95);
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    p {
+      max-width: 560px;
+      font-weight: 600;
+      line-height: 1.4;
+      display: inline-block;
+    }
+
+    &__slide {
+      position: absolute;
+
+      &.active {
+        .letter {
+          opacity: 1;
+          top: 0;
+        }
+
+        // Для тех элементов, которые находятся после активного
+        & + * .letter {
+          top: 5em;
+        }
+
+        .head-content__info {
+          opacity: 1;
+          top: 0;
+        }
+      }
+
+      // любой элемент кроме активного
+      &:has(* + .active .head-content__info),
+      &.active + * .head-content__info {
+        top: 18em;
+      }
+    }
+
+    &__title {
+      margin-right: calc(var(--index) * -2.65);
+
+      .letter {
+        text-shadow: 25px 0 35px rgba(0, 0, 0, 0.4);
+        position: relative;
+        margin-left: calc(var(--index) * -2.65);
+        opacity: 0;
+        top: -5em;
+        transition: opacity var(--transition), top var(--transition);
+      }
+    }
+
+    &__info {
+      position: relative;
+      top: -18em;
+      opacity: 0;
+      transition: opacity 1s ease, top 1.25s ease;
+    }
+  }
+
+  &-bottom {
+    min-height: 220px;
+  }
+}
+
+.slider-ui {
+  pointer-events: none;
+}
+
+.logo,
+.main-menu,
+.button,
+.submenu {
+  pointer-events: auto;
+}
